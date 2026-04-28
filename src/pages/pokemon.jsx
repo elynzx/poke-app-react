@@ -6,10 +6,15 @@ import { Pagination } from "../components/pagination/pagination";
 import { usePaginationStore } from "../store/use-pagination-store";
 import { PokemonCardSkeleton } from "../components/skeletons/pokemon-skeleton";
 import { SearchBar } from "../components/search-bar/search-bar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 export function PokemonPage() {
     const [search, setSearch] = useState("");
+    const [debouncedSearch] = useDebounce(search, 600);
+
+    const cleanSearch = debouncedSearch.replace(/\s+/g, "").toLowerCase();
+
     const page = usePaginationStore((state) => state.page);
     const limit = usePaginationStore((state) => state.limit);
     const setPage = usePaginationStore((state) => state.setPage);
@@ -18,11 +23,19 @@ export function PokemonPage() {
     );
 
     const offset = (page - 1) * limit;
-    const { data, loading, error } = useGetPokemons(offset, limit, search);
+    const isSearching = search.trim().length > 0;
+
+    const { data, loading, error } = useGetPokemons(offset, limit, cleanSearch);
 
     const handlePrevPage = () => setPage(Math.max(1, page - 1));
     const handleNextPage = () => setPage(page + 1);
     const resetPage = () => resetPagination();
+
+    useEffect(() => {
+        if (cleanSearch) {
+            resetPage();
+        }
+    }, [debouncedSearch]);
 
     if (error) {
         return (
@@ -36,9 +49,9 @@ export function PokemonPage() {
 
     return (
         <div className="flex flex-col h-full w-full rounded-t-xl overflow-hidden">
-                <SearchBar search={search} setSearch={setSearch} />
+            <SearchBar search={search} setSearch={setSearch} />
             <div className="flex-1 overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 p-6 max-w-7xl mx-auto place-items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 p-6 max-w-5xl mx-auto place-items-center">
                     {loading
                         ? Array.from({ length: limit }).map((_, index) => (
                               <PokemonCardSkeleton key={index} />
@@ -51,12 +64,12 @@ export function PokemonPage() {
                           ))}
                 </div>
             </div>
-
             <Pagination
                 currentPage={page}
                 firstPage={resetPage}
                 onPrevPage={handlePrevPage}
                 onNextPage={handleNextPage}
+                isSearching={isSearching}
             />
         </div>
     );

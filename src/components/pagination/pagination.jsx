@@ -9,13 +9,15 @@ export const Pagination = ({
     firstPage,
     onPrevPage,
     onNextPage,
+    isSearching,
 }) => {
+    const isDisabled = isSearching;
     return (
         <div className="flex items-center justify-between text-white tracking-wide font-item text-[12px] h-16 px-4 md:px-12 bg-bgDarkGray w-full mt-auto rounded-b-xl border-t border-white/5">
             <button
                 className="flex items-center w-10 md:w-full gap-1 uppercase disabled:opacity-30 hover:text-bgDarkPink transition-all active:scale-95"
                 onClick={firstPage}
-                disabled={currentPage === 1}
+                disabled={isDisabled || currentPage === 1}
             >
                 <ChevronLeft2 size={24} />
                 <span className="hidden md:inline">First</span>
@@ -24,18 +26,19 @@ export const Pagination = ({
                 <button
                     className="disabled:opacity-30 hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
                     onClick={onPrevPage}
-                    disabled={currentPage === 1}
+                    disabled={isDisabled || currentPage === 1}
                 >
                     <SquareChevronLeft size={28} />
                 </button>
                 <div className="bg-white/10 px-3 py-1 rounded-lg select-none border border-white/10 shadow-inner">
                     <span className="font-bold uppercase whitespace-nowrap">
-                         {currentPage}
+                        {currentPage}
                     </span>
                 </div>
                 <button
-                    className="hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
+                    className="disabled:opacity-30 hover:text-bgDarkPink transition-transform active:scale-90 cursor-pointer"
                     onClick={onNextPage}
+                    disabled ={isDisabled}
                 >
                     <SquareChevronRight size={28} />
                 </button>
