@@ -3,6 +3,8 @@ import { Home } from "../app/home";
 import { Pokemon } from "../app/pokemon";
 import { PokemonProfile } from "../app/pokemon-profile";
 import { RootLayout } from "../layouts/root-layout";
+import { Favorites } from "../app/favorites";
+import { Compare } from "../app/compare";
 
 export const router = createBrowserRouter([
     {
@@ -11,7 +13,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Pokemon,
+                Component: Home,
             },
             {
                 path: "pokemons",
@@ -20,6 +22,14 @@ export const router = createBrowserRouter([
             {
                 path: "pokemons/:name",
                 Component: PokemonProfile,
+            },
+            {
+                path: "compare",
+                Component: Compare,
+            },
+            {
+                path: "favorites",
+                Component: Favorites,
             },
         ],
     },
