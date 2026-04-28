@@ -1,3 +1,7 @@
 export function HomePage() {
-    return <>holie</>;
+    return(
+        <div>
+            
+        </div>
+    )
 }
