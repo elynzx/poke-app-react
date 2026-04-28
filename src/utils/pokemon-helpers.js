@@ -8,4 +8,5 @@ export const createPokemonProfile = (pokemon) => ({
     height: pokemon.height,
     types: pokemon.types?.map((type) => type.type.name),
     abilities: pokemon.abilities?.map((ability) => ability.ability.name),
+    stats: pokemon.stats,
 });
