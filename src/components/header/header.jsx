@@ -16,7 +16,7 @@ export const Header = () => {
         }`;
 
     return (
-        <header className="absolute left-1/2 -translate-x-1/2 -top-10 md:-top-5 z-40 w-[85%] md:w-[80%]">
+        <header className="absolute left-1/2 -translate-x-1/2 -top-3 md:-top-5 z-40 w-[85%] md:w-[80%]">
             <div
                 className={`z-10 w-full backdrop-blur-3xl rounded-2xl px-4 md:px-8 py-1.5 md:py-1 mt-6 flex items-center justify-between border-4  shadow-xl relative ${isOpen ? "bg-bgDarkGray border-white/90" : "border-white/40"}`}
             >
