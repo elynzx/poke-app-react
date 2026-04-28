@@ -1,4 +1,3 @@
-import { CompareCard } from "../components/compare-card/compare-card";
 
 export function ComparePage() {
     return (
