@@ -37,8 +37,8 @@ export function PokemonPage() {
     return (
         <div className="flex flex-col h-full w-full rounded-t-xl overflow-hidden">
                 <SearchBar search={search} setSearch={setSearch} />
-            <div className="flex-1 md:flex overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray w-full h-full items-center justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-7 place-items-center py-6">
+            <div className="flex-1 overflow-y-auto scrollbar-hide inset-shadow-sm inset-shadow-bgDarkGray">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 p-6 max-w-7xl mx-auto place-items-center">
                     {loading
                         ? Array.from({ length: limit }).map((_, index) => (
                               <PokemonCardSkeleton key={index} />
