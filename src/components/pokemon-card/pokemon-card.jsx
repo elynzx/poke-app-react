@@ -13,7 +13,7 @@ export const PokemonCard = ({ pokemon }) => {
 
     return (
         <div className="relative w-42 h-60 flex flex-col items-center justify-end group">
-            <div className="absolute -top-4 z-10 w-full h-38 flex justify-center items-center pointer-events-none transition-transform duration-300 group-hover:scale-110">
+            <div className="absolute -top-3 z-10 w-full h-38 flex justify-center items-center pointer-events-none transition-transform duration-300 group-hover:scale-110">
                 <img
                     src={image}
                     alt={name}
