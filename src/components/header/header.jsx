@@ -12,7 +12,7 @@ export const Header = () => {
         `px-4 py-1 rounded-md transition-all duration-300 font-item font-bold text-[10px] uppercase ${
             pathname === path
                 ? "bg-bgDarkGray text-white shadow-md scale-105"
-                : "text-bgDarkgray/80 hover:text-white hover:bg-white/30"
+                : "text-bgDarkgray/80 hover:text-white hover:bg-bgGray/40"
         }`;
 
     return (
@@ -37,7 +37,7 @@ export const Header = () => {
                     </div>
                     {isOpen && (
                         <div className="flex mt-2 w-full bg-white backdrop-blur-xl rounded-lg border-4 border-white/40 shadow-2xl p-4 md:hidden fadeIn duration-200 mb-3">
-                            <nav className="flex flex-col gap-3 w-full">
+                            <nav className="flex flex-col justify-center w-full">
                                 <Link
                                     to="/"
                                     onClick={() => setIsOpen(false)}
