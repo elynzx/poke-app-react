@@ -1,29 +1,11 @@
 import { ChevronDown, Search } from "pixelarticons/react";
 import { useState } from "react";
 import { FilterDropdown } from "../filter-dropdown/filter-dropdown";
+import { useGetFilters } from "../../hooks/use-filters";
 
-const POKEMON_TYPES = [
-    "all",
-    "grass",
-    "fire",
-    "water",
-    "bug",
-    "normal",
-    "poison",
-    "electric",
-    "fairy",
-];
-const GENERATIONS = ["all", "Gen I", "Gen II", "Gen III", "Gen IV", "Gen V"];
-
-export const SearchBar = ({ search, setSearch, onFilterType, onFilterGen }) => {
+export const SearchBar = ({ search, setSearch, setType }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedType, setSelectedType] = useState("Filter by Type");
-
-    const handleTypeSelect = (type) => {
-        setSelectedType(type === "all" ? "Filter by Type" : type);
-        setIsOpen(false);
-        if (onFilterType) onFilterType(type);
-    };
+    const { types, loading, error } = useGetFilters();
 
     return (
         <div className="font-item text-[12px] min-h-25 md:h-20 px-4 md:px-14 bg-bgDarkGray w-full flex items-center py-4 md:py-0">
@@ -40,14 +22,9 @@ export const SearchBar = ({ search, setSearch, onFilterType, onFilterGen }) => {
 
                 <div className="flex flex-row gap-2 md:gap-4 w-full md:w-auto">
                     <FilterDropdown
-                        title="Filter by Type"
-                        options={POKEMON_TYPES}
-                        onSelect={onFilterType}
-                    />
-                    <FilterDropdown
-                        title="Generation"
-                        options={GENERATIONS}
-                        onSelect={onFilterGen}
+                        title={"Filter by type"}
+                        options={["Show All", ...types]}
+                        onSelect={setType}
                     />
                 </div>
             </div>
