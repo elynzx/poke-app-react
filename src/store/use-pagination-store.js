@@ -5,7 +5,7 @@ export const usePaginationStore = create(
     persist(
         (set) => ({
             page: 1,
-            limit: 10,
+            limit: 20,
             setPage: (page) => set({ page }),
             setLimit: (limit) => set({ limit }),
             resetPagination: () => set({ page: 1 }),
