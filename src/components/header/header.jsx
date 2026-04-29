@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { CustomPokeball } from "../custom-pokeball/custom-pokeball";
-import Logo from "../../assets/logo-white.png";
+import Logo from "../../assets/logo-gray.png";
 import { MenuSquare } from "pixelarticons/react";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const linkStyle = (path) =>
-        `px-4 py-1 rounded-md transition-all duration-300 font-item font-bold text-[10px] uppercase ${
+        `px-4 py-1 rounded-md transition-all duration-300 font-item font-bold text-[12px] uppercase ${
             pathname === path
                 ? "bg-bgDarkGray text-white shadow-md scale-105"
                 : "text-bgDarkgray/80 hover:text-white hover:bg-bgGray/40"
@@ -20,12 +20,12 @@ export const Header = () => {
             <div
                 className={`z-10 w-full backdrop-blur-3xl rounded-2xl px-4 md:px-8 py-1.5 md:py-1 mt-6 flex items-center justify-between border-4  shadow-xl relative ${isOpen ? "bg-bgDarkGray border-white/90" : "border-white/40"}`}
             >
-                <div className="w-full flex flex-col items-center justify-center">
+                <div className="w-full flex flex-col items-center justify-center relative">
                     <div className="w-full flex justify-between">
                         <img
                             src={Logo}
                             alt="PokeAPI"
-                            className="h-10 md:h-14 object-contain"
+                            className="h-10 md:h-14 object-contain top-0"
                         />
 
                         <button
