@@ -63,7 +63,7 @@ export function HomePage() {
                 </div>
             </div>
             <div className="flex-1 overflow-y-auto scrollbar-hide">
-                <div className=" flex flex-col items-center justify-center relative z-10 py-8">
+                <div className=" flex flex-col items-center justify-center h-full relative z-10">
                     <img
                         src={Logo}
                         alt="PokeAPI"
@@ -83,7 +83,7 @@ export function HomePage() {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 w-full max-w-5xl mt-6 md:mt-12 px-6 md:px-0">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 w-full max-w-5xl mt-6 md:mt-8 px-6 md:px-0">
                         {APP_FEATURES.map((feature) => (
                             <div
                                 key={feature.title}
