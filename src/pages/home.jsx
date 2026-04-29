@@ -62,45 +62,47 @@ export function HomePage() {
                     <CustomPokeball size={400} />
                 </div>
             </div>
-            <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center justify-center relative z-10">
-                <img
-                    src={Logo}
-                    alt="PokeAPI"
-                    className="h-20 md:h-42 object-contain"
-                />
-                <div className="text-center px-8 md:px-0 max-w-2xl">
-                    <p className="text-sm md:text-base text-bgDarkGray/80 font-semibold leading-relaxed">
-                        A high-performance Pokémon discovery tool. Built for
-                        quick collection browsing, side-by-side comparison, and
-                        database-style exploration.
-                    </p>
-                    <Link
-                        to="/pokemons"
-                        className="inline-block mt-6 w-50 py-3 bg-bgDarkPink text-white font-bold rounded-lg shadow-lg hover:scale-105 transition-transform uppercase text-xs tracking-widest font-item"
-                    >
-                        Explore Pokedex
-                    </Link>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl mt-8 md:mt-12 px-6 md:px-0">
-                    {APP_FEATURES.map((feature) => (
-                        <div
-                            key={feature.title}
-                            className="flex gap-4 px-4 py-3 md:p-5 backdrop-blur-md rounded-lg md:rounded-3xl border-2 border-white/20 shadow-md shadow-white/20  hover:bg-white/40 transition-all font-item"
+            <div className="flex-1 overflow-y-auto scrollbar-hide">
+                <div className=" flex flex-col items-center justify-center relative z-10 py-8">
+                    <img
+                        src={Logo}
+                        alt="PokeAPI"
+                        className="h-20 md:h-42 object-contain"
+                    />
+                    <div className="text-center px-8 md:px-0 max-w-2xl">
+                        <p className="text-sm md:text-base text-bgDarkGray/80 font-semibold leading-relaxed">
+                            A high-performance Pokémon discovery tool. Built for
+                            quick collection browsing, side-by-side comparison,
+                            and database-style exploration.
+                        </p>
+                        <Link
+                            to="/pokemons"
+                            className="inline-block mt-6 w-50 py-3 bg-bgDarkPink text-white font-bold rounded-lg shadow-lg hover:scale-105 transition-transform uppercase text-xs tracking-widest font-item"
                         >
-                            <div className="text-bgDarkPink shrink-0">
-                                {feature.icon}
+                            Explore Pokedex
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl mt-8 md:mt-12 px-6 md:px-0">
+                        {APP_FEATURES.map((feature) => (
+                            <div
+                                key={feature.title}
+                                className="flex gap-4 px-4 py-3 md:p-5 backdrop-blur-md rounded-lg md:rounded-3xl border-2 border-white/20 shadow-md shadow-white/20  hover:bg-white/40 transition-all font-item"
+                            >
+                                <div className="text-bgDarkPink shrink-0">
+                                    {feature.icon}
+                                </div>
+                                <div className="flex flex-col">
+                                    <h3 className="text-[12px] font-black uppercase tracking-widest text-bgDarkPink">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-[12px] text-bgDarkGray/80 font-bold">
+                                        {feature.description}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="flex flex-col">
-                                <h3 className="text-[12px] font-black uppercase tracking-widest text-bgDarkPink">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-[12px] text-bgDarkGray/80 font-bold">
-                                    {feature.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
 
