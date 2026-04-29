@@ -1,14 +1,16 @@
 import { ChevronDown } from "pixelarticons/react";
 import { useState } from "react";
+import { POKEMON_TYPES_CONFIG } from "../../utils/pokemon-colors";
 
 export const FilterDropdown = ({ title, options, onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState(title);
 
     const handleSelect = (option) => {
-        setSelected(option === "all" ? title : option);
+        const isAll = option === "Show All";
+        setSelected(isAll ? title : option);
         setIsOpen(false);
-        onSelect(option);
+        onSelect(isAll ? "all" : option);
     };
 
     return (
@@ -26,15 +28,40 @@ export const FilterDropdown = ({ title, options, onSelect }) => {
 
             {isOpen && (
                 <ul className="absolute left-0 mt-2 w-full max-h-52 bg-white text-bgDarkGray rounded-md shadow-2xl z-[100] overflow-y-auto scrollbar-hide border border-gray-100 ring-4 ring-black/5">
-                    {options.map((option) => (
-                        <li
-                            key={option}
-                            onClick={() => handleSelect(option)}
-                            className="px-4 py-2 border-b border-gray-50 last:border-none capitalize hover:bg-bgPink hover:text-white cursor-pointer transition-colors font-semibold"
-                        >
-                            {option}
-                        </li>
-                    ))}
+                    {options.map((option) => {
+                        const displayName = option?.label || option;
+                        const isAll = displayName === "Show All";
+                        const typeConfig =
+                            POKEMON_TYPES_CONFIG[displayName.toLowerCase()];
+                        const Icon = typeConfig?.icon;
+
+                        return (
+                            <li
+                                key={displayName}
+                                onClick={() => handleSelect(option)}
+                                className="px-4 py-2 border-b border-gray-50 last:border-none capitalize hover:bg-bgPink hover:text-white flex items-center gap-2 cursor-pointer transition-colors font-semibold"
+                            >
+                                {Icon && !isAll && (
+                                    <div
+                                        className="w-6 h-6 rounded-md flex items-center justify-center shrink-0 shadow-sm"
+                                        style={{
+                                            backgroundColor: typeConfig.color,
+                                        }}
+                                    >
+                                        <Icon
+                                            weight="duotone"
+                                            size={14}
+                                            className="text-white"
+                                        />
+                                    </div>
+                                )}
+
+                                <span className={isAll ? "opacity-50" : ""}>
+                                    {isAll ? "Show All" : displayName}
+                                </span>
+                            </li>
+                        );
+                    })}
                 </ul>
             )}
         </div>
