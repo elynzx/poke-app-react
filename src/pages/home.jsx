@@ -83,7 +83,7 @@ export function HomePage() {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl mt-8 md:mt-12 px-6 md:px-0">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 w-full max-w-5xl mt-6 md:mt-12 px-6 md:px-0">
                         {APP_FEATURES.map((feature) => (
                             <div
                                 key={feature.title}
@@ -93,7 +93,7 @@ export function HomePage() {
                                     {feature.icon}
                                 </div>
                                 <div className="flex flex-col">
-                                    <h3 className="text-[12px] font-black uppercase tracking-widest text-bgDarkPink">
+                                    <h3 className="text-[12px] font-black uppercase hidden sm:inline tracking-widest text-bgDarkPink">
                                         {feature.title}
                                     </h3>
                                     <p className="text-[12px] text-bgDarkGray/80 font-bold">
